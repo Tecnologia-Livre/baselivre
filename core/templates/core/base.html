@@ -1,0 +1,127 @@
+{% load adminlte_helpers i18n %}
+{% load static %}<!DOCTYPE html>
+<html>
+<head>
+    {% block title_outer %}
+        <title>{% block title %} BaseLIVRE {% endblock %}</title>
+    {% endblock %}
+
+    {% block meta %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="apple-touch-icon" sizes="57x57" href="{% static 'core/img/icons/apple-icon-57x57.png' %}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{% static 'core/img/icons/apple-icon-60x60.png' %}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'core/img/icons/apple-icon-72x72.png' %}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{% static 'core/img/icons/apple-icon-76x76.png' %}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'core/img/icons/apple-icon-114x114.png' %}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{% static 'core/img/icons/apple-icon-120x120.png' %}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{% static 'core/img/icons/apple-icon-144x144.png' %}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{% static 'core/img/icons/apple-icon-152x152.png' %}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'core/img/icons/apple-icon-180x180.png' %}">
+        <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'core/img/icons/android-icon-192x192.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'core/img/icons/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{% static 'core/img/icons/favicon-96x96.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'core/img/icons/favicon-16x16.png' %}">
+        <link rel="manifest" href="{% static 'core/img/icons/manifest.json' %}">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+    {% endblock %}
+
+    {% block stylesheets %}
+        {% include 'adminlte/lib/_styles.html' %}
+        <link rel="stylesheet" href="{% static 'core/css/toastr.css' %}">
+        <link rel="stylesheet" href="{% static 'core/css/custom.css' %}">
+        <link rel="stylesheet" href="{% static 'core/css/selectpicker/bootstrap-select.min.css' %}">
+    {% endblock %}
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="hold-transition sidebar-mini {% block body_class %}{% block bodyclass %}{% endblock %}{% endblock %}">
+
+{% block body %}
+    <div class="wrapper">
+        {% block nav_header %}
+            {% include 'adminlte/lib/_main_header.html' %}
+        {% endblock %}
+
+        {% block nav_sidebar %}
+            {% include 'adminlte/lib/_main_sidebar.html' %}
+        {% endblock %}
+
+        {% block content_wrapper %}
+        <div class="content-wrapper">
+            {% block content_header %}
+                <section class="content-header">
+                    <div class="container-fluid">
+                        <div class="row">
+                            {% block no_heading %}
+                                <div class="col-md-6">
+                                    <h1>
+                                        {% block page_name %}{% endblock %}
+                                        <div class="header-actions">
+                                            {% block page_actions %}{% endblock %}
+                                        </div>
+                                        {% block no_description %}
+                                        <small>{% block page_description %}{% endblock %}</small>
+                                        {% endblock %}
+                                    </h1>
+                                </div>
+                                <div class="col-md-6">
+                                    <ol class="breadcrumb float-sm-right">
+                                        {% block breadcrumbs %}
+                                            
+                                        {% endblock %}
+                                    </ol>
+                                </div>
+                            {% endblock no_heading %}
+                        </div>
+                    </div>
+                </section>
+            {% endblock %}
+
+            {% block content_outer %}
+            <section class="content">
+                {% block messages %}
+                    {% include 'adminlte/lib/_messages.html' %}
+                {% endblock %}
+
+                {% block content_block_wrap %}
+                <div class="content animated faster fadeInLeft">
+                    <div class="container-fluid">
+                        <div class="row justify-content-center">
+                            <div class="col-md-12">
+                                {% block content %}{% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endblock %}
+            </section>
+            {% endblock %}
+
+        </div>
+        {% endblock content_wrapper %}
+        
+        {% block nav_footer %}
+            {% include 'adminlte/lib/_main_footer.html' %}
+        {% endblock %}
+
+    </div>
+{% endblock body %}
+
+{% block javascript %}
+    {% include 'adminlte/lib/_scripts.html' %}
+    {% include 'core/messages.html' %}
+    <script src="{% static 'core/js/plugins/selectpicker/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'core/js/plugins/selectpicker/i18n/defaults-pt_BR.min.js' %}"></script>
+{% endblock %}
+
+
+
+{% block extra_js %}{% endblock %}
+
+{% block extra_foot %}{% endblock %}
+</body>
+</html>

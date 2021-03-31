@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% load livre_tags %}
+{% load crispy_forms_tags %}
+
+{% block page_name %}
+Editar Senha do Usuário {{user.username}}
+{% endblock page_name%}
+
+{% block breadcrumbs %}
+    {% breadcrumb 'Home' 'home' 0 %}
+    {% breadcrumb 'Usuários' 'users_index' 0 %}
+    {% breadcrumb 'Editar Senha do Usuário' '' 1 %}
+{% endblock breadcrumbs %}
+
+{% block content %}
+<div class="card">
+  <div class="card-body">
+    {% crispy form %}
+  </div>
+</div>
+<!-- /.card -->
+{% endblock content %}
+
+
+
+
+{% block extra_js %}
+
+{% endblock %}

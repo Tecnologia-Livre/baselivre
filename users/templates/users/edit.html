@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% load livre_tags %}
+{% load crispy_forms_tags %}
+
+{% block page_name %}
+Editar Usuário {{user.username}}
+{% endblock page_name%}
+
+{% block breadcrumbs %}
+    {% breadcrumb 'Home' 'home' 0 %}
+    {% breadcrumb 'Usuários' 'users_index' 0 %}
+    {% breadcrumb 'Editar Usuário' '' 1 %}
+{% endblock breadcrumbs %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            {% crispy form %}
+        </div>
+    </div>
+{% endblock content%}
+
+{% block extra_js %}
+<script>
+    $(function () {
+        $("#id_groups, #id_user_permissions").attr('data-live-search', true);
+        $("#id_groups, #id_user_permissions").selectpicker('refresh');
+    });
+</script>
+{% endblock extra_js%}

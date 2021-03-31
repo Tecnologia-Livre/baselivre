@@ -1,0 +1,96 @@
+{% extends 'adminlte/login.html' %}
+{%load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'core/css/toastr.css' %}">
+{% endblock %}
+
+{% block logo %}
+<div class="login-logo">
+    <a href="{% block logo_href %}/{% endblock %}">
+        <img src="{%static 'core/img/caixalivrelogo.png' %}" alt="">
+        {% block logo_text %}
+            <b>Base</b>LIVRE
+        {% endblock %}
+    </a>
+</div>
+
+{% endblock %}
+
+    {% block login_errors %}
+        
+    {% endblock login_errors %}
+
+{% block login_form %}
+    <div class="col-md-12 text-center login-logo">
+        
+    </div>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {% if message %}
+            <p class="login-box-msg" style="color: red;">{{ message }}</p>
+        {% endif %}
+        
+
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user-circle"></i></span>
+                </div>
+                <input type="text" name="username" class="form-control" placeholder="Nome de usuário"
+                       value="{% if form.username.value%}{{form.username.value}}{%endif%}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                <input type="password" name="password1" class="form-control" placeholder="Senha"
+                       value="{% if form.password1.value%}{{form.password1.value}}{%endif%}">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                <input type="password" name="password2" class="form-control" placeholder="Confirmar Senha"
+                       value="{% if form.password2.value%}{{form.password2.value}}{%endif%}">
+            </div>
+        </div>
+        <div class="row">
+            
+            <div class="col-md-12 text-center">
+                <button class="btn btn-primary" type="submit">Cadastrar</button>
+            </div>
+            <div class="col-md-12 text-center">
+                    <br>
+                    Já possui uma conta? Faça o <a href="{% url 'login' %}">Login</a>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{%static 'core/js/plugins/toastr.min.js'%}"></script>
+
+    <script>
+        $(document).ready(function(){
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        toastr["error"]("{{field.label}}: {{ error|escape }}")
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    toastr["error"]("{{field.label}}: {{ error|escape }}")
+                {% endfor %}
+            {% endif %}
+        })
+    </script> 
+{% endblock %}
+
+ 

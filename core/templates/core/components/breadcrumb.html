@@ -1,0 +1,5 @@
+{% if active %}
+    <li class="breadcrumb-item active">{{label}}</li>
+{% else %}
+    <li class="breadcrumb-item"><a href="{% url view_name %}">{{label}}</a></li>
+{% endif %}

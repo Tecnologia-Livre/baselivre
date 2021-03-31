@@ -1,0 +1,17 @@
+{% load static %}
+{% if messages %}
+    <script src="{% static 'core/js/plugins/toastr.min.js'%}"></script>
+    <script>
+        $(document).ready(function(){
+            {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    toastr["success"]("{{message}}")
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    toastr["error"]("{{message}}")
+                {% else %}
+                    toastr["info"]("{{message}}")
+                {% endif %}
+            {% endfor %}
+        })
+{% endif %}
+</script> 

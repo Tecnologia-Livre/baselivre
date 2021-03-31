@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% load livre_tags %}
+{% load crispy_forms_tags %}
+
+{% block page_name %}
+Novo Grupo
+{% endblock page_name%}
+
+{% block breadcrumbs %}
+    {% breadcrumb 'Home' 'home' 0 %}
+    {% breadcrumb 'Grupos' 'users_index' 0 %}
+    {% breadcrumb 'Novo Grupo' '' 1 %}
+{% endblock breadcrumbs %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            {% crispy form %}
+        </div>
+    </div>
+{% endblock content%}
+
+{% block extra_js %}
+<script>
+    $(function () {
+        $("#id_permissions").attr('data-live-search', true);
+        $("#id_permissions").selectpicker('refresh')
+    });
+</script>
+{% endblock extra_js%}
