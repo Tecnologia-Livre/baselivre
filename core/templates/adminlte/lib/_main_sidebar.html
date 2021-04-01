@@ -1,0 +1,65 @@
+{% load adminlte_helpers %}
+{%load static %}
+<!-- Left side column. contains the sidebar -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+     <!-- Brand Logo -->
+     <div>
+        <a href="/dashboard/" class="brand-link">
+            <img src="{%static 'core/img/caixalivrelogo.png' %}" alt="CaixaLivre Logo" class="brand-image" >
+            <span class="brand-text font-weight-light"><b>Base</b>LIVRE</span>
+        </a>
+     </div>
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <div class="sidebar">
+        <!-- Sidebar user panel -->
+        {% block user_panel %}{% endblock %}
+
+        {% block form %}{% endblock %}
+
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        {% block nav_links_ul %}
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            {% block nav_links_outer %}
+            <li class="nav-header">{% block nav_heading %}MENU PRINCIPAL{% endblock %}</li>
+
+            {% block nav_links %}
+                <li class="nav-item">
+                    <a href="{% url 'home' %}" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i> 
+                        <p>Início</p>
+                    </a>
+                </li>
+                <li class="nav-item has-tree-view ">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-cogs"></i> 
+                        <p>Administrativo</p>
+                        <p><i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview menu-open">
+                        <li class="nav-item">
+                            <a href="{% url 'users_index' %}" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i> 
+                                <p>Usuários</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'groups_index' %}" class="nav-link">
+                                <i class="nav-icon fas fa-users-cog"></i> 
+                                <p>Grupos</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                
+            {% endblock nav_links %}
+            {% endblock nav_links_outer %}
+            </ul>
+            </nav>
+        {% endblock nav_links_ul %}
+    </div>
+    <!-- /.sidebar -->
+</aside>
